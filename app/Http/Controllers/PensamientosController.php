@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Notifications\NotificationPensamiento;
+use App\Events\MyEvent;
 use App\Pensamiento;
 use App\User;
-use App\Notifications\NotificationPensamiento;
 
 class PensamientosController extends Controller
 {
@@ -39,8 +40,10 @@ class PensamientosController extends Controller
         $pensamiento->descripcion = $request->descripcion;
         $pensamiento->user_id = auth()->id();
         $pensamiento->save();
-        $user = User::find($pensamiento->user_id);
-        //$user->notify(new NotificationPensamiento($pensamiento));
+        $when = now()->addSeconds(10);
+        auth()->user()->notify((new NotificationPensamiento())->delay($when));
+        $notify = auth()->user()->unreadNotifications;
+        event(new MyEvent($notify));
         return $pensamiento;
     }
 

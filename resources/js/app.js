@@ -18,9 +18,19 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-Vue.component('mi-pensamiento', require('./components/MiPensamientoComponent.vue').default);
-Vue.component('form-component', require('./components/FormComponent.vue').default);
-Vue.component('pensamiento-component', require('./components/PensamientoComponent.vue').default);
+
+import MiPensamiento from './components/MiPensamientoComponent.vue';
+import Formulario from './components/FormComponent.vue';
+import Pensamientos from './components/PensamientoComponent.vue';
+import Nuevo from './components/NuevoComponent.vue';
+import Notification from './components/NotificationComponent.vue';
+
+Vue.component('nuevo-hola', Nuevo);
+Vue.component('mi-pensamiento', MiPensamiento);
+Vue.component('form-component', Formulario);
+Vue.component('pensamiento-component', Pensamientos);
+Vue.component('notification-component', Notification);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -15,8 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/broadcast', function () {
+    return view('broadcast');
+});
+
+Route::post('/pusher', function(){
+ //this
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::apiResource('pensamientos', 'PensamientosController');
+
+Route::get('/notification','NotificationController@readNotification');
+
+

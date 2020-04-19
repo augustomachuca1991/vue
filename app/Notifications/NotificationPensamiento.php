@@ -11,15 +11,15 @@ class NotificationPensamiento extends Notification
 {
     use Queueable;
 
-    protected $pensamiento;
+    //protected $pensamiento;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($pensamiento)
+    public function __construct()
     {
-        $this->pensamiento = $pensamiento;
+        //$this->pensamiento = $pensamiento;
     }
 
     /**
@@ -30,7 +30,7 @@ class NotificationPensamiento extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database','broadcast'];
     }
 
     /**
@@ -56,7 +56,14 @@ class NotificationPensamiento extends Notification
     public function toDataBase($notifiable)
     {
         return [
-            'data' = $this->pensamiento,
+            'notification' => now()->format('d-m-Y H.i.s').' - se creo un nuevo pensamiento',
+        ];
+    }
+
+    public function toBroadcast($notifiable)
+    {
+        return [
+            'notification' => now()->format('d-m-Y H.i.s').' - se creo un nuevo pensamiento',
         ];
     }
 }

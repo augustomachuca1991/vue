@@ -5,7 +5,7 @@
           <form action="" v-on:submit.prevent="newPensamiento()">
               <div class="form-group">
                 <label for="exampleInputEmail1">Ahora estoy pensando en:</label>
-                <input type="text" class="form-control" id="pensamiento" aria-describedby="emailHelp" name="pensamiento" v-model="descripcion">
+                <input type="text" class="form-control" id="pensamiento" aria-describedby="emailHelp" name="pensamiento" v-model="descripcion" state="true">
                 <button class="btn btn-primary my-2" type="submit"><i class="fas fa-plus"></i> Nuevo</button>
               </div>
           </form>
